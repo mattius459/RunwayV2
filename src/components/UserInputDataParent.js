@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Config from "./Config";
-import RunwayChart from "./RunwayChart";
 import computeChartData from "./ChartCalc";
 import renderChart from "./ChartCreation";
 import Plot from "react-plotly.js";
