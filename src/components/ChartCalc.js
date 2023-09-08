@@ -4,7 +4,6 @@ function computeChartData(data) {
     const MNI_input = Number(data.monthly_income);
     const MS_input = Number(data.monthly_spend);
     const TA_input = Number(data.current_investments);
-
     const lifeExpectancy = Number(data.life_expectancy);
     
     const EI = Number(data.expected_inflation) / 100;
@@ -12,11 +11,10 @@ function computeChartData(data) {
     const EAE = Number(data.expected_age_of_entitlement);
     const ER = Number(data.expected_return) / 100;
     const SI_input = Number(0.02 + EI);
-    //MNIIR = monthly net income increase rate
-    const MNIIR = Math.pow(1 + SI_input, 1 / 12) - 1;
+    //MNIIR is the monthly net income increase rate
+    const MNIIR_input = Math.pow(1 + SI_input, 1 / 12) - 1;
     const TF = 0.15;
     const MER = Math.pow(1 + ER, 1 / 12) - 1;
-
     
     let retireIn = 0;
     const financial_traces_data = [];
@@ -25,8 +23,9 @@ function computeChartData(data) {
         let MS = MS_input;
         let MNI = MNI_input;
         let TA = TA_input;
-        // let SI = SI_input;
+        let SI = SI_input;
         let MIR = MIR_input;
+        let MNIIR = MNIIR_input;
         const monthly_financial_data = [];
         let month = 0;
 
@@ -34,9 +33,12 @@ function computeChartData(data) {
 
             // Check if age of entitlement has been reached
             if (month === (EAE - age) * 12) {
-                // SI = MIR - 0.00083; // assuming SS payment growth is 1% less than inflation. Fix this later.
+                //Fix this entire block of code later as it is confusing and probably not accurate.
+                SI = MIR - 0.00083; // assuming SS payment growth is 1% less than inflation. Fix this later.
+                MNIIR = Math.pow(1 + SI, 1 / 12) - 1;
                 MS = MS * 0.99875; // assuming 1.5% less annual spending each year in retirement. Fix this later.
                 MNI = 6000; // assumed SS payment. Fix this later.
+                MNI *= 1 + MNIIR;
             }
             if (month === retireIn * 12) {
                 MNI = 0;
@@ -70,7 +72,5 @@ function computeChartData(data) {
 
     return [age, EAE, lifeExpectancy, financial_traces_data];
 }
-
-// const chartData = computeChartData(25, 5000, 4000, 100000, 0.05, 0.02, 65, 100);
 
 export default computeChartData;

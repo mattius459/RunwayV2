@@ -10,8 +10,11 @@ function renderChart([
 ]) {
   y_axes_max = 0;
   financial_traces_data = [];
+  let age_of_retirement;
 
-  for (const financial_data of financial_traces_seed_data) {
+  for (let i = 0; i < financial_traces_seed_data.length; i++) {
+    const financial_data = financial_traces_seed_data[i];
+    let years_of_work = i;
     //Create arrays for hoverdata to use
     const month_array = financial_data.map((_, i) => i / 12 + currentAge);
     const monthInYearArray = financial_data.map((_, i) => i % 12);
@@ -32,7 +35,6 @@ function renderChart([
 
     //Use above arrays to create customdata object array for hoverdata to use
     const resultArray = [];
-    console.log(financial_traces_seed_data.length)
 
     for (let i = 0; i < MSValues.length; i++) {
       const newObj = {
@@ -43,6 +45,7 @@ function renderChart([
         MonthlyNumber: monthInYearArray[i],
         Year: futureMonthsAndYears[i].year,
         monthName: futureMonthsAndYears[i].monthName,
+        years_of_work: years_of_work,
       };
       resultArray.push(newObj);
     }
@@ -52,6 +55,7 @@ function renderChart([
       y: TAValues,
       customdata: resultArray,
       hovertemplate:
+        "Assuming %{customdata.years_of_work:.0f} more years of work<br>" +
         "<b>Date:</b> %{customdata.monthName}, %{customdata.Year:.0f}<br>" +
         "<b>Age:</b> %{x:.0f} years" +
         " and %{customdata.MonthlyNumber} month(s)<br>" +
@@ -90,9 +94,16 @@ function renderChart([
         if (i === 0) {
           financial_traces_data[trace].line.dash = "solid";
           financial_traces_data[trace].line.color = "green";
+          age_of_retirement = trace + currentAge
+          //Determine if assets are greater at retirement age or EAE age and set y_axes_max accordingly
+          if (financial_traces_data[trace].y[(age_of_retirement - currentAge) * 12] * 1.5 > 
+          financial_traces_data[trace].y[(EAE - currentAge) * 12] * 1.5) {
+            y_axes_max = financial_traces_data[trace].y[(age_of_retirement - currentAge) * 12] * 1.5;
+          } else {
+            y_axes_max = financial_traces_data[trace].y[(EAE - currentAge) * 12] * 1.5;
+          }
 
-          y_axes_max =
-            financial_traces_data[trace].y[(EAE - currentAge) * 12] * 1.5;
+
         }
       }
       break;

@@ -2,15 +2,6 @@ import React, { useEffect } from "react";
 
 function Config({ handleChange, handleChartUpdate, formData }) {
 
-  const handleSubmit = async () => {
-    try {
-      handleChartUpdate(formData);
-      console.log("Form data submitted successfully.");
-    } catch (error) {
-      console.error("Error submitting form data:", error);
-    }
-  };
-
   const handleSliderRelease = (event) => {
     const { id, value } = event.target;
     const newMax = parseInt(value) * 2;
@@ -100,12 +91,12 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             onMouseUp={handleSliderRelease}
           />
         </div>
-        {/* Submit button */}
+        {/* Submit button
         <div id="submit_div">
           <button id="submit" type="button" onClick={handleSubmit}>
             Submit
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="Config2">
         {/* current investments div */}
