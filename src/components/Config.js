@@ -29,6 +29,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
     handleSliderRelease({ target: { id: "expected_inflation", value: formData.expected_inflation } });
     handleSliderRelease({ target: { id: "expected_age_of_entitlement", value: formData.expected_age_of_entitlement } });
     handleSliderRelease({ target: { id: "life_expectancy", value: formData.life_expectancy } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
