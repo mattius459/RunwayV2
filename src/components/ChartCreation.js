@@ -1,5 +1,3 @@
-// import plotly from "plotly.js-dist";
-// import Plot from "react-plotly.js";
 
 let financial_traces_data = [];
 let y_axes_max = 0;
