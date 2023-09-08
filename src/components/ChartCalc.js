@@ -25,7 +25,7 @@ function computeChartData(data) {
         let MS = MS_input;
         let MNI = MNI_input;
         let TA = TA_input;
-        let SI = SI_input;
+        // let SI = SI_input;
         let MIR = MIR_input;
         const monthly_financial_data = [];
         let month = 0;
@@ -34,7 +34,7 @@ function computeChartData(data) {
 
             // Check if age of entitlement has been reached
             if (month === (EAE - age) * 12) {
-                SI = MIR - 0.00083; // assuming SS payment growth is 1% less than inflation. Fix this later.
+                // SI = MIR - 0.00083; // assuming SS payment growth is 1% less than inflation. Fix this later.
                 MS = MS * 0.99875; // assuming 1.5% less annual spending each year in retirement. Fix this later.
                 MNI = 6000; // assumed SS payment. Fix this later.
             }
