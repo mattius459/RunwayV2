@@ -12,12 +12,12 @@ function UserInputDataParent() {
     monthly_income_max: 8000,
     monthly_spend: 3000,
     monthly_spend_max: 6000,
-    current_investments: 200000,
+    current_investments: 50000,
     current_investments_max: 400000,
-    expected_return: "8",
-    expected_return_max: "16",
-    expected_inflation: "4",
-    expected_inflation_max: "8",
+    expected_return: "7",
+    expected_return_max: "14",
+    expected_inflation: "3",
+    expected_inflation_max: "6",
     expected_age_of_entitlement: "67",
     expected_age_of_entitlement_max: "73",
     life_expectancy: "90",
@@ -64,12 +64,15 @@ function UserInputDataParent() {
 
   return (
     <>
+      
       <Plot data={chartData} layout={layout} />
+      
       <Config
         handleChange={handleChange}
         handleChartUpdate={updateChart}
         formData={formData}
       />
+      
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { MNITooltip, MSTooltip, TATooltip, ERTooltip, EITooltip, EAETooltip} from "./Tooltip";
 
 function Config({ handleChange, handleChartUpdate, formData }) {
 
@@ -43,8 +44,10 @@ function Config({ handleChange, handleChartUpdate, formData }) {
         {/* ... */}
         {/* Monthly Income div */}
         <div id="monthly_income_div">
+          
             <div id="monthly_income_text_box">
           <p>Monthly Income</p>
+          
           <input
             type="number"
             id="monthly_income"
@@ -53,6 +56,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             value={formData.monthly_income}
             onChange={handleChange}
           />
+          <MNITooltip className="tooltip-spacing" />
           </div>
           <input
             type="range"
@@ -78,7 +82,9 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             value={formData.monthly_spend}
             onChange={handleChange}
           />
+          <MSTooltip className="tooltip-spacing" />
           </div>
+          
           <input
             type="range"
             id="monthly_spend"
@@ -91,18 +97,12 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             onMouseUp={handleSliderRelease}
           />
         </div>
-        {/* Submit button
-        <div id="submit_div">
-          <button id="submit" type="button" onClick={handleSubmit}>
-            Submit
-          </button>
-        </div> */}
       </div>
       <div className="Config2">
         {/* current investments div */}
         <div id="current_investments_div">
             <div id="current_investments_text_box">
-          <p>Current Investments</p>
+          <p>Current Assets</p>
           <input
             type="number"
             id="current_investments"
@@ -111,6 +111,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             value={formData.current_investments}
             onChange={handleChange}
           />
+          <TATooltip className="tooltip-spacing" />
           </div>
           <input
             type="range"
@@ -127,7 +128,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
         {/* expected return div */}
         <div id="expected_return_div">
             <div id="expected_return_text_box">
-          <p>Expected Return</p>
+          <p>Expected Return (%)</p>
           <input
             type="number"
             id="expected_return"
@@ -136,6 +137,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             value={formData.expected_return}
             onChange={handleChange}
           />
+          <ERTooltip className="tooltip-spacing" />
           </div>
           <input
             type="range"
@@ -152,7 +154,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
         {/* expected inflation div */}
         <div id="expected_inflation_div">
         <div id="expected_inflation_text_box">
-          <p>Expected Inflation</p>
+          <p>Expected Inflation (%)</p>
           <input
             type="number"
             id="expected_inflation"
@@ -161,6 +163,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             value={formData.expected_inflation}
             onChange={handleChange}
           />
+          <EITooltip className="tooltip-spacing" />
         </div>
           <input
             type="range"
@@ -188,6 +191,7 @@ function Config({ handleChange, handleChartUpdate, formData }) {
             value={formData.expected_age_of_entitlement}
             onChange={handleChange}
           />
+          <EAETooltip className="tooltip-spacing" />
           </div>
           <input
             type="range"

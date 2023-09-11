@@ -95,7 +95,7 @@ function renderChart([
           financial_traces_data[trace].line.dash = "solid";
           financial_traces_data[trace].line.color = "green";
           age_of_retirement = trace + currentAge
-          //Determine if assets are greater at retirement age or EAE age and set y_axes_max accordingly
+          //Determine if assets are greater at retirement age or EAE age and set y_axes_max accordingly. This is to make the y-scale of the chart look okay.
           if (financial_traces_data[trace].y[(age_of_retirement - currentAge) * 12] * 1.5 > 
           financial_traces_data[trace].y[(EAE - currentAge) * 12] * 1.5) {
             y_axes_max = financial_traces_data[trace].y[(age_of_retirement - currentAge) * 12] * 1.5;
