@@ -54,7 +54,7 @@ function MSTooltip() {
   function EAETooltip() {
     return (
       <div className="tooltip-container">
-        <Tooltip title="The age you expect to get your entitlement (otherwise known as social security)" position="right" trigger="mouseenter">
+        <Tooltip title="Sometimes known as social security" position="right" trigger="mouseenter">
           <button className="circle-button">i</button>
         </Tooltip>
       </div>
